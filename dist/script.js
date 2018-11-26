@@ -39,15 +39,11 @@ const getText = todo.querySelector('.addText');
      filterCompleted.classList.add('TodoFooter__completed');
      filterCompleted.innerHTML = '<p> Completed </p>';
      const items = document.querySelectorAll('.TodoFooter__item');
-     console.log(items.length );
+    
      todoFooter.appendChild(item);
      todoFooter.appendChild(filterAll);
      todoFooter.appendChild(filterActive);
      todoFooter.appendChild(filterCompleted);
-if(items.length > 0 ){
-  todoFooter.replaceChild(item[0], item[1]);
- 
-}
    
 
      addCheck.addEventListener('click', function(event){ 

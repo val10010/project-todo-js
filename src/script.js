@@ -39,7 +39,7 @@ const getText = todo.querySelector('.addText');
      filterCompleted.classList.add('TodoFooter__completed');
      filterCompleted.innerHTML = '<p> Completed </p>';
      const items = document.querySelectorAll('.TodoFooter__item');
-     console.log(items.length );
+    
      todoFooter.appendChild(item);
      todoFooter.appendChild(filterAll);
      todoFooter.appendChild(filterActive);
