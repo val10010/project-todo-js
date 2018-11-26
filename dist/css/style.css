@@ -1,0 +1,86 @@
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.todo {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.addText {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box; }
+
+.TodoLine {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  display: flex;
+  padding: 5px;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff; }
+  .TodoLine:hover {
+    background: url(../img/128397.png);
+    background-size: 20px;
+    background-position: 97% center;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    padding: 5px; }
+  .TodoLine__chek {
+    width: 60px;
+    height: 30px;
+    background: url(../img/unchecked.svg);
+    background-size: 30px;
+    background-repeat: no-repeat; }
+  .TodoLine__content {
+    width: 100%;
+    margin: 0 44px; }
+  .TodoLine__close {
+    width: 56px;
+    height: 30px;
+    background-size: 20px; }
+
+.TodoFooter {
+  width: 100%;
+  max-width: 400px;
+  height: 50px;
+  border: 1px solid black;
+  display: flex; }
+  .TodoFooter__item {
+    width: 100px;
+    height: 50px;
+    border: 1px solid red; }
+  .TodoFooter__all {
+    margin-left: 50px;
+    width: 100px;
+    height: 50px;
+    border: 1px solid red; }
+  .TodoFooter__active {
+    width: 100px;
+    height: 50px;
+    border: 1px solid red; }
+  .TodoFooter__completed {
+    width: 100px;
+    height: 50px;
+    border: 1px solid red; }
+
+.hide {
+  display: none; }
+
+.del {
+  text-decoration: line-through;
+  color: gray; }
+
+.addImg {
+  background: url(../img/checked.svg) no-repeat;
+  background-size: 30px; }
