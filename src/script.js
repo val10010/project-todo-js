@@ -44,10 +44,6 @@ const getText = todo.querySelector('.addText');
      todoFooter.appendChild(filterAll);
      todoFooter.appendChild(filterActive);
      todoFooter.appendChild(filterCompleted);
-if(items.length > 0 ){
-  todoFooter.replaceChild(item[0], item[1]);
- 
-}
    
 
      addCheck.addEventListener('click', function(event){ 
