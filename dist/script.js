@@ -2,13 +2,11 @@
 
 const todo = document.querySelector('.todo');
 const getText = todo.querySelector('.addText');
-
+const container = document.querySelector('.container');
 
  getText.addEventListener('keyup', function(event) {
  
   if (event.key === "Enter" && event.target.value !== '') {
-     const todoFooter = document.querySelector('.TodoFooter');
-     todoFooter.classList.remove('hide');
      const addDiv = document.createElement('div');
      addDiv.classList.add('TodoLine');
      const addCheck = document.createElement('div');
@@ -24,11 +22,22 @@ const getText = todo.querySelector('.addText');
      todoLine.appendChild(addClose);
 
      //create footer
+     const todoFooter = document.createElement('div');
+     todoFooter.classList.add('TodoFooter');
+     container.appendChild(todoFooter);
      const todoLines = document.querySelectorAll('.TodoLine');
-     let lengthTodolines = todoLines.length; 
+     
+     let counter = 0;
+     todoLines.forEach(todoLine => {
+       
+       counter = todoLines.length;
+
+     });
+    
+     
      const item = document.createElement('div');
      item.classList.add('TodoFooter__item');
-     item.textContent = lengthTodolines;
+     item.textContent = counter;
      const filterAll = document.createElement('div');
      filterAll.classList.add('TodoFooter__all');
      filterAll.innerHTML = '<p> All </p>'; 
@@ -38,26 +47,32 @@ const getText = todo.querySelector('.addText');
      const filterCompleted = document.createElement('div');
      filterCompleted.classList.add('TodoFooter__completed');
      filterCompleted.innerHTML = '<p> Completed </p>';
-     const items = document.querySelectorAll('.TodoFooter__item');
-    
-     todoFooter.appendChild(item);
-     todoFooter.appendChild(filterAll);
-     todoFooter.appendChild(filterActive);
-     todoFooter.appendChild(filterCompleted);
-   
+     const todoFooters = document.querySelectorAll('.TodoFooter');
+ 
+      todoFooter.appendChild(item);
+      todoFooter.appendChild(filterAll);
+      todoFooter.appendChild(filterActive);
+      todoFooter.appendChild(filterCompleted);
 
+     if(todoFooters.length > 1){
+     todoFooter.previousElementSibling.remove();
+     }
+    
+    
      addCheck.addEventListener('click', function(event){ 
       if (event.target.classList.length > 1) {
-        this.parentElement.classList.remove('del');
+        this.parentElement.classList.remove('checked');
         event.target.classList.remove('addImg');
       } else {
-        this.parentElement.classList.add('del');
+        this.parentElement.classList.add('checked');
         event.target.classList.add('addImg');
       }
      })
+     
     
      addClose.addEventListener('click', function(event) {
        this.parentElement.remove();
+          
      })   
   }  
 })
