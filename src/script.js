@@ -66,7 +66,6 @@
       todoBlock.classList.add("todoBlock");
       const todoItem = document.createElement("li");
       todoItem.classList.add("list");
-      if (todos[todo] != empty) {
         todoItem.textContent = todos[todo].name;
         const todoCheck = document.createElement("input");
         todoCheck.setAttribute("type", "checkbox");
@@ -83,7 +82,7 @@
         }
         closeTodos(todoClose);
         console.log(todos);
-      }
+      
     }
   };
 })();
