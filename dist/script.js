@@ -1,82 +1,91 @@
-(function(){
+(function() {
+  const container = document.querySelector(".container");
+  const todo = document.querySelector(".todo");
+  const todos = [];
 
-const todo = document.querySelector('.todo');
-const getText = todo.querySelector('.addText');
-const container = document.querySelector('.container');
+  const todoInput = document.createElement("input");
+  todoInput.setAttribute("type", "text");
+  container.appendChild(todoInput);
 
- getText.addEventListener('keyup', function(event) {
- 
-  if (event.key === "Enter" && event.target.value !== '') {
-     const addDiv = document.createElement('div');
-     addDiv.classList.add('TodoLine');
-     const addCheck = document.createElement('div');
-     addCheck.classList.add('TodoLine__chek');
-     const addContent = document.createElement('div');
-     addContent.classList.add('TodoLine__content');
-     addContent.innerHTML = getText.value;
-     const addClose = document.createElement('div');
-     addClose.classList.add('TodoLine__close');
-     const todoLine = todo.appendChild(addDiv);
-     todoLine.appendChild(addCheck);
-     todoLine.appendChild(addContent);
-     todoLine.appendChild(addClose);
+  const addTodo = function(name, status, state) {
+    const newTodo = {
+      name: name,
+      completed: status,
+    };
 
-     //create footer
-     const todoFooter = document.createElement('div');
-     todoFooter.classList.add('TodoFooter');
-     container.appendChild(todoFooter);
-     const todoLines = document.querySelectorAll('.TodoLine');
-     
-     let counter = 0;
-     todoLines.forEach(todoLine => {
-       
-       counter = todoLines.length;
+    todos.push(newTodo);
+  };
 
-     });
-    
-     
-     const item = document.createElement('div');
-     item.classList.add('TodoFooter__item');
-     item.textContent = counter;
-     const filterAll = document.createElement('div');
-     filterAll.classList.add('TodoFooter__all');
-     filterAll.innerHTML = '<p> All </p>'; 
-     const filterActive = document.createElement('div');
-     filterActive.classList.add('TodoFooter__active');
-     filterActive.innerHTML = '<p> Active </p>';
-     const filterCompleted = document.createElement('div');
-     filterCompleted.classList.add('TodoFooter__completed');
-     filterCompleted.innerHTML = '<p> Completed </p>';
-     const todoFooters = document.querySelectorAll('.TodoFooter');
- 
-      todoFooter.appendChild(item);
-      todoFooter.appendChild(filterAll);
-      todoFooter.appendChild(filterActive);
-      todoFooter.appendChild(filterCompleted);
-
-     if(todoFooters.length > 1){
-     todoFooter.previousElementSibling.remove();
-     }
-    
-    
-     addCheck.addEventListener('click', function(event){ 
-      if (event.target.classList.length > 1) {
-        this.parentElement.classList.remove('checked');
-        event.target.classList.remove('addImg');
-      } else {
-        this.parentElement.classList.add('checked');
-        event.target.classList.add('addImg');
-      }
-     })
-     
-    
-     addClose.addEventListener('click', function(event) {
-       this.parentElement.remove();
+  const checkboxTodos = function(checkbox) {
+    checkbox.addEventListener("click", function(event) {
+      
+       for(let i=0; i<todos.length; i++) {
+      
+         if(todos[i].name == event.target.nextElementSibling.textContent){
+          todos[i].completed = !todos[i].completed;
           
-     })   
-  }  
-})
+            if(todos[i].completed ){
+              event.target.nextElementSibling.style.setProperty('text-decoration', 'line-through');
+            }else{
+              event.target.nextElementSibling.style.setProperty('text-decoration', 'none');
+            }
+         }
 
+        }
+    });
+  }
+
+  const closeTodos = function (close) { 
+    close.addEventListener("click", function(event) {
+      
+      for(let i=0; i<todos.length; i++) {
      
+        if(todos[i].name == event.target.previousElementSibling.textContent){
+          console.log(todos);
+          delete todos[i];
+         event.target.parentElement.remove();
+         
+        }
 
+       }
+   });
+  }
+
+  todoInput.addEventListener("keypress", function(event) {
+    if (event.which === 13) {
+      todoList.innerHTML = '';
+      addTodo(event.target.value, false);
+      renderTodos(todos);
+    }
+  });
+
+  const todoList = document.createElement("ul");
+  container.appendChild(todoList);
+
+  const renderTodos = function(todos) {
+  for(let todo=0; todo<todos.length; todo++ ) {
+      const todoBlock = document.createElement('div');
+      todoBlock.classList.add('todoBlock');
+      const todoItem = document.createElement("li");
+      todoItem.classList.add('list');
+      if(todos[todo] != empty){
+      todoItem.textContent = todos[todo].name;
+      const todoCheck = document.createElement("input");
+      todoCheck.setAttribute("type", "checkbox");
+      todoCheck.classList.add("checkbox");
+      const todoClose = document.createElement('div');
+      todoClose.classList.add('todoClose');
+      todoList.appendChild(todoBlock);
+      todoBlock.appendChild(todoCheck);
+      todoBlock.appendChild(todoItem);
+      todoBlock.appendChild(todoClose);
+      checkboxTodos(todoCheck);
+      if (todos[todo].completed ){
+        todoCheck.checked = !0;
+      }
+      closeTodos(todoClose);  
+      console.log(todos);
+    }
+    }
+  }
 })();
