@@ -7,6 +7,45 @@
   flex-direction: column;
   align-items: center;
 }
+.inputContainer {
+  width: 550px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  background: #fff;
+}
+
+.todoList {
+  margin: 0;
+  padding: 0;
+}
+
+.list {
+  list-style: none;
+  align-items: flex-start;
+}
+
+.arrow {
+  color: #737373;
+  transform: rotate(90deg);
+  &:before {
+    content: "❯";
+    font-size: 22px;
+    color: #e6e6e6;
+    padding: 10px 27px 10px 27px;
+    transform: rotate(90deg);
+  }
+}
+
+.todoInput {
+  width: 100%;
+  height: 45px;
+  border: none;
+  &:active {
+    border: none;
+  }
+}
 
 .todoClose {
   background: url(../img/128397.png);
@@ -16,7 +55,25 @@
 }
 
 .todoBlock {
-  width: 300px;
-  height: 30px;
+  width: 550px;
+  height: 65px;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24px;
+}
+
+.todoFooter {
+  display: flex;
+  justify-content: space-between;
+  width: 550px;
+}
+
+.active {
+  border: 1px solid red;
+  padding: 5px;
+}
+
+.hide {
+  display: none;
 }
